@@ -53,10 +53,9 @@ if (app.get('env') === 'development') {
         message: err.message || JSON.stringify(err),
         error: err
       });
-    } else {
-      console.error((new Date).toUTCString() + ' uncaughtException:', err.message);
-      console.error(err.stack);
     }
+    console.error((new Date).toUTCString() + ' ERROR:', err.message);
+    console.error(err.stack);
     bugsense.logError(err, {request:req.url, method:req.method});
   });
 }
@@ -70,10 +69,9 @@ app.use(function(err, req, res, next) {
       message: err.message || JSON.stringify(err),
       error: {}
     });
-  } else {
-    console.error((new Date).toUTCString() + ' uncaughtException:', err.message);
-    console.error(err.stack);
   }
+  console.error((new Date).toUTCString() + ' ERROR:', err.message);
+  console.error(err.stack);
   bugsense.logError(err, {request:req.url, method:req.method});
 });
 
