@@ -6,6 +6,11 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var bugsense = require('node-bugsense').setAPIKey('499ed547');
 
+var git = require('git-rev')
+git.short(function (str) {
+  console.log("GIT VERSION", str);
+})
+
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
